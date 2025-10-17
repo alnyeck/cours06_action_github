@@ -26,8 +26,8 @@ jobs:
          
           #cml-send-comment metrics.txt 
           #cml-send-comment report.md
-          git config --global user.email "mhafod@yahoo.com"
-          git config --global user.name "degenio"
+          git config --global user.email "nyeck@sympatico.ca"
+          git config --global user.name "alnyeck"
           git add report.md sortie.txt
           git commit -m "pousser vers github repository"
           git push origin HEAD:main
