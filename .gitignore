@@ -1,0 +1,29 @@
+# --- Environnement virtuel ---
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# --- Fichiers temporaires ---
+*.log
+*.tmp
+*.bak
+*.swp
+~$*.docx
+
+# --- Dossiers systèmes ---
+.DS_Store
+Thumbs.db
+
+# --- Fichiers de configuration privés ---
+*.env
+.env.*
+secrets.json
+config.yaml
+
+# --- Cache et artefacts ---
+.cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
