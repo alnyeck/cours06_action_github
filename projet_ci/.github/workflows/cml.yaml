@@ -1,6 +1,5 @@
 name: CML CI/CD Workflow
 
-# Déclenche le workflow sur chaque push vers la branche main
 on:
   push:
     branches: [ main ]
@@ -20,12 +19,12 @@ jobs:
         with:
           python-version: "3.10"
 
-      # 3️⃣ Installer les dépendances (si requirements.txt présent)
+      # 3️⃣ Installer les dépendances si requirements.txt existe
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # 4️⃣ Exécuter ton script Python
+      # 4️⃣ Exécuter le script Python
       - name: Run main.py
         run: |
           python main.py
@@ -34,14 +33,13 @@ jobs:
       - name: Show sortie.txt
         run: cat sortie.txt
 
-      # 6️⃣ (Optionnel) Commit et push des fichiers générés
+      # 6️⃣ Commit & Push des fichiers générés
       - name: Commit & Push generated files
         run: |
           git config --global user.email "nyeck@sympatico.ca"
           git config --global user.name "alnyeck"
           git add sortie.txt report.md || echo "Nothing to add"
           git diff --cached --quiet || git commit -m "Update generated files"
-          git push origin HEAD:main || echo "Nothing to push"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/alnyeck/projet_ci.git HEAD:main || echo "Nothing to push"
         env:
-          # Token GitHub pour push
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
